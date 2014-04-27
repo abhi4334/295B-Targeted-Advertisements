@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Targeted Advertisements</title>
+<link rel="stylesheet" th:href="@{/resources/page.css}" type="text/css"
+	media="screen"></link>
+<link rel="stylesheet" th:href="@{/resources/form.css}" type="text/css"
+	media="screen"></link>
+<link rel="stylesheet" th:href="@{/resources/messages/messages.css}"
+	type="text/css" media="screen"></link>
+</head>
+<body>
+	<div id="header">
+		<h1>
+			<a th:href="@{/}">Targeted Advertisements</a>
+		</h1>
+	</div>
+
+	<div id="leftNav">Left nav menu</div>
+
+	<div id="content" layout:fragment="content">
+		<h3>Likes for User</h3>
+
+			<!--Abhi  -->
+			<ul class="feedList">
+				<li th:each="likes : ${likesdemo}">
+					<p th:text="${likes.id} + ${likes.name}" />
+				</li>
+			</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:social="http://spring.io/springsocial"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+  <head>
+    <title>Graph Results</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" type="text/css" media="screen"></link>
+
+    <!-- Add custom CSS here -->
+    <link th:href="@{/resources/css/sb-admin.css}" rel="stylesheet" type="text/css"></link>
+    <link rel="stylesheet" th:href="@{/resources/font-awesome/css/font-awesome.min.css}" type="text/css"></link>
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"></link>
+    
+    <!--Abhi  -->
+    <link rel="stylesheet" th:href="@{/resources/page.css}" type="text/css" media="screen"></link>
+	<link rel="stylesheet" th:href="@{/resources/form.css}" type="text/css" media="screen"></link>
+	<link rel="stylesheet" th:href="@{/resources/messages/messages.css}" type="text/css" media="screen"></link>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script >
+$(document).ready(function() {
+	
+	var optionTexts = [] ;
+	//optionTexts.push("[");
+	$("span").each(function() { 
+		optionTexts.push($(this).text()) 
+	});
+	//optionTexts.push("]");
+	//alert(optionTexts);
+	var finalText = "[" + optionTexts + "]";
+	//alert(finalText);
+	//getting JSON data from external sources
+	
+
+new Morris.Bar ({
+  element: 'bar-chart',
+  data: $.parseJSON(finalText.toString()),
+  xkey: 'a',
+  ykeys: ['b'],
+  labels: ['Data'],
+  barRatio: 0.4,
+  xLabelAngle: 35,
+  hideHover: 'auto'
+});
+
+});
+</script>
+
+</head>
+<body>
+	
+	<div class="row">
+          	<div class="col-lg-12">
+				<div id="content" layout:fragment="content">
+					
+					<div class="">
+						  <ul class="friends">  
+							
+							<li th:each="graphresult : ${graphresults}"> <span hidden="true" th:text="${graphresult}"></span> </li>
+							
+						  </ul> 
+							
+					</div>
+          			
+          			
+        		</div><!-- /.row -->
+        	</div><!-- /.row -->
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Advertisement Statistics: October 1, 2013 - October 31, 2013</h3>
+              </div>
+              <div class="panel-body">
+                <div id="bar-chart"></div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.row -->
+        
+<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+    <script th:src="@{/resources/js/morris/chart-data-morris.js}"></script>
+    <script th:src="@{/resources/js/tablesorter/jquery.tablesorter.js}"></script>
+    <script th:src="@{/resources/js/tablesorter/tables.js}"></script>
+
+</body>
+</html>
