@@ -55,8 +55,8 @@ public class OperationsController {
 			String toemail = myprofile.getEmail();
 			if(user_object_id != null)
 			{
-				//addToUserBehavior(myprofile,connection,user_object_id);
-				//addToSocialData(connection,user_object_id);
+				addToUserBehavior(myprofile,connection,user_object_id);
+				addToSocialData(connection,user_object_id);
 				ArrayList<HashMap<String, String>> checkinMapList = getFriendsLatestCheckins25();
 				ArrayList<HashMap<String, String>> restaurantMapList = new ArrayList<HashMap<String,String>>();
 				if(checkinMapList.size()>0)

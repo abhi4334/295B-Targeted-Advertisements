@@ -30,6 +30,8 @@ public class AddDataSet {
 			DBConfigurationProperties.load(getClass().getClassLoader().getResourceAsStream(DB_CONFIG_PROP_FILE_NAME));
 			
 			/**Mongo DB*/
+			String temp = DBConfigurationProperties.getProperty("server");
+			System.out.println(temp);
 			mongo = new MongoClient(DBConfigurationProperties.getProperty("server"), 27017);	//DBConfigurationProperties.getProperty("server")
 			 
 			db = mongo.getDB(DBConfigurationProperties.getProperty("database_name"));	// if database doesn't exists, MongoDB will create new
@@ -157,7 +159,8 @@ public class AddDataSet {
 							basicDBObject.put(titleKeys[i], productValues[i]);
 						}
 					}
-					basicDBObject.put(NUMBER_OF_AD_DELIVERED, 0);
+					int random = 1 + (int)(Math.random() * ((100 - 1) + 1));
+					basicDBObject.put(NUMBER_OF_AD_DELIVERED, random);
 					
 					locationDataCollection.insert(basicDBObject);
 					

@@ -96,7 +96,7 @@ new Morris.Bar ({
           <ul class="nav navbar-nav navbar-right navbar-user">
          
            
-            <li class="dropdown alerts-dropdown">
+            <!-- <li class="dropdown alerts-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Default <span class="label label-default">Default</span></a></li>
@@ -108,13 +108,13 @@ new Morris.Bar ({
                 <li class="divider"></li>
                 <li><a href="#">View All</a></li>
               </ul>
-            </li>
+            </li> -->
             <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Retailer  <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <!-- <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li> -->
                 <li class="divider"></li>
                 <li><a href="logout.html"><i class="fa fa-power-off"></i> Log Out</a></li>
               </ul>
@@ -202,16 +202,16 @@ new Morris.Bar ({
                     <i class="fa fa-comments fa-5x"></i>
                   </div>
                   <div class="col-xs-6 text-right">
-                    <p class="announcement-heading">56</p>
-                    <p class="announcement-text">New Orders!</p>
+                    <p class="announcement-heading">*</p>
+                    <p class="announcement-text">Number of Ads</p>
                   </div>
                 </div>
               </div>
-              <a href="#">
+              <a th:href="@{/getGraphTestData(userName=${userName})}>
                 <div class="panel-footer announcement-bottom">
                   <div class="row">
                     <div class="col-xs-6">
-                      Complete Orders
+                      View Graph
                     </div>
                     <div class="col-xs-6 text-right">
                       <i class="fa fa-arrow-circle-right"></i>
@@ -220,7 +220,6 @@ new Morris.Bar ({
                 </div>
               </a>
             </div>
-          </div>
         </div><!-- /.row -->
        				<div class="">
 						  <ul class="friends">  
@@ -235,7 +234,7 @@ new Morris.Bar ({
           <div class="col-lg-12">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Advertisement Statistics: October 1, 2013 - October 31, 2013</h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Advertisement Statistics</h3>
               </div>
               <div class="panel-body">
                 <div id="bar-chart"></div>
