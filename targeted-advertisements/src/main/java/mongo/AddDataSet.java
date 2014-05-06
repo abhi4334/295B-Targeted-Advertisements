@@ -134,12 +134,10 @@ public class AddDataSet {
 			sCurrentLine = br.readLine();
 			//System.out.println(sCurrentLine);
 			String[] titleKeys = sCurrentLine.split(",");
-			int titleNum = 1;
 			BasicDBObject basicDBObject;
 			int lineNumber = 2;
 			while((sCurrentLine = br.readLine())!= null)
 			{
-				//sCurrentLine = sCurrentLine.replaceAll("", "");	//"[""  ""]"
 				//System.out.println("in while..");
 				String productValues[] = sCurrentLine.split(",");
 				//System.out.println(productValues.length);
@@ -205,7 +203,7 @@ public class AddDataSet {
 			String filePath = "C:\\Users\\Abhi\\Desktop\\dataset\\products.csv";
 			insertProductObj.insertProductDataToDB(filePath);
 			insertPlacesObj = new AddDataSet();
-			//insertPlacesObj.insertPlacesDataToDB("C:\\Users\\Abhi\\Desktop\\dataset\\places.csv");
+			insertPlacesObj.insertPlacesDataToDB("C:\\Users\\Abhi\\Desktop\\dataset\\places.csv");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

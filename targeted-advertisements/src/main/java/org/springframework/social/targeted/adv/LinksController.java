@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import mongo.MongoController;
 import mongo.ProductInfo;
 
+import org.springframework.social.connect.Connection;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,12 +69,13 @@ public class LinksController {
 		return "viewAds";
 	}
 	
-	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	/*@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public String logoutCall(Model model,WebRequest request) {
 		
 		model.addAttribute("userName", null);
+		SecurityContextHolder.getContext().setAuthentication(null);
 		return "logout";
-	}
+	}*/
 	
 	@RequestMapping(value="/signinAgain",method=RequestMethod.GET)
 	public String signinCall(Model model,WebRequest request) {
@@ -80,5 +83,7 @@ public class LinksController {
 		model.addAttribute("userName", null);
 		return "signin";
 	}
+	
+	
 	
 }

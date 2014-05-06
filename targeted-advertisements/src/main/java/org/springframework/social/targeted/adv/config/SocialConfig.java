@@ -36,11 +36,13 @@ import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
+import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.connect.web.ReconnectFilter;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.facebook.web.DisconnectController;
+import org.springframework.social.targeted.adv.facebook.PostToWallAfterConnectInterceptor;
 import org.springframework.social.targeted.adv.signin.SimpleSignInAdapter;
 
 @Configuration
@@ -84,6 +86,13 @@ public class SocialConfig implements SocialConfigurer {
 	public Facebook facebook(ConnectionRepository repository) {
 		Connection<Facebook> connection = repository.findPrimaryConnection(Facebook.class);
 		return connection != null ? connection.getApi() : null;
+	}
+	
+	@Bean
+	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
+		ConnectController connectController = new ConnectController(connectionFactoryLocator, connectionRepository);
+		connectController.addInterceptor(new PostToWallAfterConnectInterceptor());
+		return connectController;
 	}
 	
 	//

@@ -17,6 +17,7 @@ package org.springframework.social.targeted.adv.facebook;
 
 import javax.inject.Inject;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
@@ -38,12 +39,17 @@ public class FacebookProfileController {
 	public String home(Model model) {
 		Connection<Facebook> connection = connectionRepository.findPrimaryConnection(Facebook.class);
 		if (connection == null) {
-			return "redirect:/connect/facebook";
+			SecurityContextHolder.getContext().setAuthentication(null);
+			return "redirect:/signin";
 		}
 		model.addAttribute("profile", connection.getApi().userOperations().getUserProfile());
-		
-		
 		return "facebook/profile";
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.POST)
+	public String logout(Model model) {
+		return "redirect:/signin";
+		
 	}
 	
 }

@@ -45,7 +45,7 @@ public class HomeController {
 		model.addAttribute(accountRepository.findAccountByUsername(currentUser.getName()));
 		//System.out.println(currentUser.getName());
 		model.addAttribute("userName",currentUser.getName());
-		if(currentUser.getName().equals("abhi4334"))
+		if(currentUser.getName().equals("abhi4334")||currentUser.getName().equals("nishant.rangrej"))
 		{
 			return "index";
 		}

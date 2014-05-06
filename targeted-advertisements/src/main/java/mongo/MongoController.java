@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import org.bson.BSON;
 import org.bson.types.ObjectId;
 import org.springframework.social.facebook.api.Reference;
 
@@ -16,7 +15,6 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
-import com.mongodb.util.JSON;
 
 public class MongoController {
 	
@@ -102,7 +100,6 @@ public class MongoController {
 		public String addUserInfo(String login_id, String pwd,String facebook_id, String email, String name, String lname)
 		{
 			boolean isUserExists = false;
-			boolean isSuccessAddUserInfo = false;
 			ObjectId documentId = null;
 			
 			try {
@@ -133,13 +130,11 @@ public class MongoController {
 					updateUserDBObject.put(N_NAME, name);
 					updateUserDBObject.put(N_LNAME, lname);
 					userInfoCollection.update(userSearchDbObj, updateUserDBObject,true,false);
-					isSuccessAddUserInfo = true;
 					documentId = (ObjectId) userInfoCollection.findOne(userSearchDbObj).get("_id");
 					System.out.println("After update..ID: "+documentId);
 				}
 				else{
 					userInfoCollection.insert(newUserDBObject);
-					isSuccessAddUserInfo = true;
 					documentId = (ObjectId) newUserDBObject.get("_id");
 				}
 
